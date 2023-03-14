@@ -54,7 +54,7 @@ const Page = () => {
 
   return (
     <div className="w-[60%] mx-auto min-h-screen h-screen" ref={chatRef}>
-      <div className="h-10 mb-10 w-full bg-gray-900 flex items-center justify-center font-semibold">
+      <div className="h-10 top-0 sticky mb-10 w-full bg-gray-900 flex items-center justify-center font-semibold">
         New Chat
       </div>
       <div className="">
