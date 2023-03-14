@@ -53,10 +53,13 @@ const Page = () => {
   };
 
   return (
-    <div className="w-[60%] mx-auto min-h-screen h-screen" ref={chatRef}>
-      <div className="h-10 top-0 sticky mb-10 py-7 w-full bg-gray-900 flex items-center justify-center font-semibold">
+    <div
+      className="py-5 lg:w-[60%] w-full mx-auto min-h-screen h-screen"
+      ref={chatRef}
+    >
+      {/* <div className="h-10 top-0 sticky mb-10 py-7 w-full bg-gray-900 flex items-center justify-center font-semibold">
         New Chat
-      </div>
+      </div> */}
       <div className="">
         <h1 className="text-5xl text-center text-purple-500 font-semibold">
           BrainyType
@@ -66,7 +69,7 @@ const Page = () => {
         </p>
         {/* <div className="h-96 bg-slate-500"></div> */}
       </div>
-      <div className="">
+      <div className="lg:px-0 px-3">
         {threads.map((message: any, i: number) => (
           <div
             key={i}
@@ -88,7 +91,7 @@ const Page = () => {
             <div className="chat-header">
               {message.role === "user" ? "You" : "BrainyType"}
             </div>
-            <div className="chat-bubble">{message.content}</div>
+            <div className="chat-bubble prose">{message.content}</div>
           </div>
         ))}
         {loading && (
@@ -107,7 +110,7 @@ const Page = () => {
       </div>
       <div className="h-24"></div>
       <div
-        className="fixed w-[60%] bottom-0 px-2 my-4 flex justify-center py-3"
+        className="fixed lg:w-[60%] mx-auto w-full bottom-0 px-2 my-4 flex justify-center py-3"
         style={{
           backdropFilter: "blur(5px)",
         }}
@@ -118,11 +121,11 @@ const Page = () => {
         >
           <textarea
             className="resize-y min-h-0 h-auto border rounded-md w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline max-h-96"
-            placeholder="Enter your text here..."
+            placeholder="Type a message..."
             value={message}
             onChange={(e) => setMessage(e.target.value)}
           ></textarea>
-          <button className="bg-purple-600 px-4 py-2  rounded-md text-white font-semibold">
+          <button className="btn px-4 py-2  rounded-md text-white font-semibold">
             Send
           </button>
         </form>
