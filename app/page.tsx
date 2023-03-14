@@ -15,6 +15,7 @@ const Page = () => {
   const [loading, setLoading] = useState(false);
 
   const handleNewMessage = async (e: any) => {
+    setLoading(true);
     e.preventDefault();
     const payload = {
       role: "user",
@@ -42,6 +43,7 @@ const Page = () => {
       );
       setThreads((prevThreads: any) => {
         const newThreads = [...prevThreads, res.data.choices[0].message];
+        setLoading(false);
         return newThreads;
       });
       console.log(res);
