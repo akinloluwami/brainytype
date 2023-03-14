@@ -47,7 +47,7 @@ const Page = () => {
   return (
     <div className="w-[60%] pt-5 mx-auto h-screen" ref={chatRef}>
       <div className="">
-        {threads.map((message, i) => (
+        {threads.map((message: any, i: number) => (
           <div
             key={i}
             className={`chat ${
