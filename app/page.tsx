@@ -4,11 +4,12 @@ import React, { useState } from "react";
 
 const Page = () => {
   const [threads, setThreads] = useState(thread);
+  const [message, setMessage] = useState("");
 
-  const handleNewMessage = (text: string) => {
+  const handleNewMessage = () => {
     const payload = {
       role: "user",
-      content: text,
+      content: message,
     };
     setThreads([...threads, payload]);
   };
