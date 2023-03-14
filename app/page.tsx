@@ -4,7 +4,7 @@ import axios from "axios";
 import React, { useState, useRef } from "react";
 
 const Page = () => {
-  const [threads, setThreads] = useState(thread);
+  const [threads, setThreads] = useState<any>([]);
   const [message, setMessage] = useState("");
   const chatRef = useRef(null);
 
@@ -14,7 +14,7 @@ const Page = () => {
       role: "user",
       content: message,
     };
-    setThreads((prevThreads) => {
+    setThreads((prevThreads: any) => {
       const newThreads = [...prevThreads, payload];
       setMessage("");
       console.log(newThreads);
