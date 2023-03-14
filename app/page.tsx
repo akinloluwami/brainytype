@@ -105,8 +105,9 @@ const Page = () => {
           </div>
         )}
       </div>
+      <div className="h-24"></div>
       <div
-        className="sticky w-full bottom-0 px-2 my-4 flex justify-center py-3"
+        className="fixed w-[60%] bottom-0 px-2 my-4 flex justify-center py-3"
         style={{
           backdropFilter: "blur(5px)",
         }}
