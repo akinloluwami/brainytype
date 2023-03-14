@@ -12,6 +12,7 @@ const Page = () => {
   ]);
   const [message, setMessage] = useState("");
   const chatRef = useRef(null);
+  const [loading, setLoading] = useState(false);
 
   const handleNewMessage = async (e: any) => {
     e.preventDefault();
