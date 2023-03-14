@@ -37,6 +37,7 @@ const Page = () => {
         )
         .then((res) => {
           console.log(res);
+          setThreads([...threads, res.data.choices[0].message]);
         });
     } catch (error) {
       console.log(error);
