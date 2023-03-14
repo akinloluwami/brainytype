@@ -6,7 +6,8 @@ const Page = () => {
   const [threads, setThreads] = useState(thread);
   const [message, setMessage] = useState("");
 
-  const handleNewMessage = () => {
+  const handleNewMessage = (e: any) => {
+    e.preventDefault();
     const payload = {
       role: "user",
       content: message,
@@ -47,6 +48,7 @@ const Page = () => {
           <textarea
             className="resize-y min-h-0 h-auto border rounded-md w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline max-h-96"
             placeholder="Enter your text here..."
+            onChange={(e) => setMessage(e.target.value)}
           ></textarea>
           <button className="bg-purple-600 px-4  rounded-md text-white font-semibold">
             Send
