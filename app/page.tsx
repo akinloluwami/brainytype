@@ -2,6 +2,7 @@
 import thread from "@/thread";
 import axios from "axios";
 import React, { useState, useRef } from "react";
+import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 
 const Page = () => {
   const [threads, setThreads] = useState<any>([
@@ -91,7 +92,9 @@ const Page = () => {
             <div className="chat-header">
               {message.role === "user" ? "You" : "BrainyType"}
             </div>
-            <div className="chat-bubble prose">{message.content}</div>
+            <div className="chat-bubble">
+              <ReactMarkdown>{message.content}</ReactMarkdown>
+            </div>
           </div>
         ))}
         {loading && (
