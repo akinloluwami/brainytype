@@ -1,35 +1,27 @@
-import React from "react";
+"use client";
+import thread from "@/thread";
+import React, { useState } from "react";
 
 const Page = () => {
+  const [threads, setThreads] = useState(thread);
   return (
-    <div className="w-[60%] mx-auto min-h-screen relative">
+    <div className="w-[60%] pt-5 mx-auto min-h-screen relative">
       <div className="">
-        <div className="chat chat-start">
-          <div className="chat-image avatar">
-            <div className="w-10 rounded-full">
-              <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+        {threads.map((message) => (
+          <div className="chat chat-start">
+            <div className="chat-image avatar">
+              <div className="w-10 rounded-full">
+                <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+              </div>
             </div>
-          </div>
-          <div className="chat-header">
-            Obi-Wan Kenobi
-            <time className="text-xs opacity-50">12:45</time>
-          </div>
-          <div className="chat-bubble">You were the Chosen One!</div>
-          <div className="chat-footer opacity-50">Delivered</div>
-        </div>
-        <div className="chat chat-end">
-          <div className="chat-image avatar">
-            <div className="w-10 rounded-full">
-              <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+            <div className="chat-header">
+              Obi-Wan Kenobi
+              <time className="text-xs opacity-50">12:45</time>
             </div>
+            <div className="chat-bubble">You were the Chosen One!</div>
+            <div className="chat-footer opacity-50">Delivered</div>
           </div>
-          <div className="chat-header">
-            Anakin
-            <time className="text-xs opacity-50">12:46</time>
-          </div>
-          <div className="chat-bubble">I hate you!</div>
-          <div className="chat-footer opacity-50">Seen at 12:46</div>
-        </div>
+        ))}
       </div>
       <div className="absolute bottom-0 w-full my-4 flex justify-center">
         <form className="flex items-center justify-start w-full gap-2">
