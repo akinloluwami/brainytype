@@ -13,7 +13,7 @@ const Page = () => {
   const [message, setMessage] = useState("");
   const chatRef = useRef(null);
 
-  const handleNewMessage = (e: any) => {
+  const handleNewMessage = async (e: any) => {
     e.preventDefault();
     const payload = {
       role: "user",
@@ -22,28 +22,28 @@ const Page = () => {
     setThreads((prevThreads: any) => {
       const newThreads = [...prevThreads, payload];
       setMessage("");
-      console.log(newThreads);
       return newThreads;
     });
 
     try {
-      axios
-        .post(
-          "https://api.openai.com/v1/chat/completions",
-          {
-            model: "gpt-3.5-turbo",
-            messages: threads,
+      const newThreads = [...threads, payload];
+      const res = await axios.post(
+        "https://api.openai.com/v1/chat/completions",
+        {
+          model: "gpt-3.5-turbo",
+          messages: newThreads,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${process.env.NEXT_PUBLIC_OPENAI_API_KEY}`,
           },
-          {
-            headers: {
-              Authorization: `Bearer ${process.env.NEXT_PUBLIC_OPENAI_API_KEY}`,
-            },
-          }
-        )
-        .then((res) => {
-          console.log(res);
-          setThreads([...threads, res.data.choices[0].message]);
-        });
+        }
+      );
+      setThreads((prevThreads: any) => {
+        const newThreads = [...prevThreads, res.data.choices[0].message];
+        return newThreads;
+      });
+      console.log(res);
     } catch (error) {
       console.log(error);
     }
