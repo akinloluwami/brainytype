@@ -1,10 +1,11 @@
 "use client";
 import thread from "@/thread";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 const Page = () => {
   const [threads, setThreads] = useState(thread);
   const [message, setMessage] = useState("");
+  const chatRef = useRef(null);
 
   const handleNewMessage = (e: any) => {
     e.preventDefault();
@@ -13,10 +14,15 @@ const Page = () => {
       content: message,
     };
     setThreads([...threads, payload]);
+    setMessage("");
+
+    if (chatRef.current) {
+      chatRef.current.scrollTop = chatRef.current.scrollHeight;
+    }
   };
 
   return (
-    <div className="w-[60%] pt-5 mx-auto h-screen">
+    <div className="w-[60%] pt-5 mx-auto h-screen" ref={chatRef}>
       <div className="">
         {threads.map((message, i) => (
           <div
@@ -51,6 +57,7 @@ const Page = () => {
           <textarea
             className="resize-y min-h-0 h-auto border rounded-md w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline max-h-96"
             placeholder="Enter your text here..."
+            value={message}
             onChange={(e) => setMessage(e.target.value)}
           ></textarea>
           <button className="bg-purple-600 px-4  rounded-md text-white font-semibold">
