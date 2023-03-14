@@ -1,5 +1,6 @@
 "use client";
 import thread from "@/thread";
+import axios from "axios";
 import React, { useState, useRef } from "react";
 
 const Page = () => {
@@ -21,6 +22,22 @@ const Page = () => {
     });
 
     try {
+      axios
+        .post(
+          "https://api.openai.com/v1/chat/completions",
+          {
+            model: "gpt-3.5-turbo",
+            messages: threads,
+          },
+          {
+            headers: {
+              Authorization: `Bearer ${process.env.NEXT_PUBLIC_OPENAI_API_KEY}`,
+            },
+          }
+        )
+        .then((res) => {
+          console.log(res);
+        });
     } catch (error) {
       console.log(error);
     }
