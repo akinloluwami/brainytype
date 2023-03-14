@@ -54,7 +54,7 @@ const Page = () => {
 
   return (
     <div className="w-[60%] mx-auto min-h-screen h-screen" ref={chatRef}>
-      <div className="h-10 top-0 sticky mb-10 w-full bg-gray-900 flex items-center justify-center font-semibold">
+      <div className="h-10 top-0 sticky mb-10 py-7 w-full bg-gray-900 flex items-center justify-center font-semibold">
         New Chat
       </div>
       <div className="">
@@ -64,7 +64,7 @@ const Page = () => {
         <p className="my-5 text-center text-xl mb-10">
           A better interface for ChatGPT
         </p>
-        <div className="h-96 bg-slate-500"></div>
+        {/* <div className="h-96 bg-slate-500"></div> */}
       </div>
       <div className="">
         {threads.map((message: any, i: number) => (
