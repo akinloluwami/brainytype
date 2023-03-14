@@ -88,6 +88,19 @@ const Page = () => {
             <div className="chat-bubble">{message.content}</div>
           </div>
         ))}
+        {loading && (
+          <div className="chat chat-start">
+            <div className="chat-image avatar">
+              <div className="w-10 rounded-full">
+                <img
+                  src={"https://api.dicebear.com/5.x/bottts/svg?seed=Shadow"}
+                />
+              </div>
+            </div>
+            <div className="chat-header">BrainyType</div>
+            <div className="chat-bubble">Typing...</div>
+          </div>
+        )}
       </div>
       <div
         className="sticky w-full bottom-0 px-2 my-4 flex justify-center py-3"
