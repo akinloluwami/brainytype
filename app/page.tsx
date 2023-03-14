@@ -44,7 +44,10 @@ const Page = () => {
         ))}
       </div>
       <div className="sticky bottom-0  w-full my-4 flex justify-center">
-        <form className="flex items-center justify-start w-full gap-2">
+        <form
+          className="flex items-center justify-start w-full gap-2"
+          onSubmit={handleNewMessage}
+        >
           <textarea
             className="resize-y min-h-0 h-auto border rounded-md w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline max-h-96"
             placeholder="Enter your text here..."
