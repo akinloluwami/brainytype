@@ -15,10 +15,6 @@ const Page = () => {
     };
     setThreads([...threads, payload]);
     setMessage("");
-
-    if (chatRef.current) {
-      chatRef.current.scrollTop = chatRef.current.scrollHeight;
-    }
   };
 
   return (
@@ -49,7 +45,12 @@ const Page = () => {
           </div>
         ))}
       </div>
-      <div className="sticky bottom-0  w-full my-4 flex justify-center">
+      <div
+        className="sticky bottom-0 px-2 w-full my-4 flex justify-center py-3"
+        style={{
+          backdropFilter: "blur(5px)",
+        }}
+      >
         <form
           className="flex items-center justify-start w-full gap-2"
           onSubmit={handleNewMessage}
@@ -60,7 +61,7 @@ const Page = () => {
             value={message}
             onChange={(e) => setMessage(e.target.value)}
           ></textarea>
-          <button className="bg-purple-600 px-4  rounded-md text-white font-semibold">
+          <button className="bg-purple-600 px-4 py-2  rounded-md text-white font-semibold">
             Send
           </button>
         </form>
