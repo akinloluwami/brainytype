@@ -4,7 +4,12 @@ import axios from "axios";
 import React, { useState, useRef } from "react";
 
 const Page = () => {
-  const [threads, setThreads] = useState<any>([]);
+  const [threads, setThreads] = useState<any>([
+    {
+      content: "You are ChatGPT, a large language model trained by OpenAI.",
+      role: "system",
+    },
+  ]);
   const [message, setMessage] = useState("");
   const chatRef = useRef(null);
 
