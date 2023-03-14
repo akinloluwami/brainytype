@@ -7,15 +7,20 @@ const Page = () => {
   return (
     <div className="w-[60%] pt-5 mx-auto h-screen">
       <div className="">
-        {threads.map((message) => (
-          <div className="chat chat-start">
+        {threads.map((message, i) => (
+          <div
+            key={i}
+            className={`chat ${
+              message.role === "user" ? "chat-end" : "chat-start"
+            }`}
+          >
             <div className="chat-image avatar">
               <div className="w-10 rounded-full">
                 <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
               </div>
             </div>
             <div className="chat-header">Obi-Wan Kenobi</div>
-            <div className="chat-bubble">You were the Chosen One!</div>
+            <div className="chat-bubble">{message.content}</div>
           </div>
         ))}
       </div>

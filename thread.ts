@@ -1,9 +1,5 @@
 const thread = [
   {
-    role: "system",
-    content: "You are ChatGPT, a large language model trained by OpenAI.",
-  },
-  {
     role: "user",
     content: "Hi",
   },
