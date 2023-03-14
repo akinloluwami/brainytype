@@ -13,8 +13,12 @@ const Page = () => {
       role: "user",
       content: message,
     };
-    setThreads([...threads, payload]);
-    setMessage("");
+    setThreads((prevThreads) => {
+      const newThreads = [...prevThreads, payload];
+      setMessage("");
+      console.log(newThreads);
+      return newThreads;
+    });
   };
 
   return (
