@@ -19,6 +19,11 @@ const Page = () => {
       console.log(newThreads);
       return newThreads;
     });
+
+    try {
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
