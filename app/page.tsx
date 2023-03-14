@@ -50,14 +50,14 @@ const Page = () => {
   };
 
   return (
-    <div className="w-[60%] pt-5 mx-auto h-screen" ref={chatRef}>
+    <div className="w-[60%] pt-5 mx-auto min-h-screen h-screen" ref={chatRef}>
       <div className="">
         {threads.map((message: any, i: number) => (
           <div
             key={i}
             className={`chat ${
               message.role == "assistant" ? "chat-start" : "chat-end"
-            }`}
+            } ${message.role === "system" && "hidden"}`}
           >
             <div className="chat-image avatar">
               <div className="w-10 rounded-full">
@@ -78,7 +78,7 @@ const Page = () => {
         ))}
       </div>
       <div
-        className="sticky bottom-0 px-2 w-full my-4 flex justify-center py-3"
+        className="sticky w-full bottom-0 px-2 my-4 flex justify-center py-3"
         style={{
           backdropFilter: "blur(5px)",
         }}
