@@ -4,6 +4,15 @@ import React, { useState } from "react";
 
 const Page = () => {
   const [threads, setThreads] = useState(thread);
+
+  const handleNewMessage = (text: string) => {
+    const payload = {
+      role: "user",
+      content: text,
+    };
+    setThreads([...threads, payload]);
+  };
+
   return (
     <div className="w-[60%] pt-5 mx-auto h-screen">
       <div className="">
@@ -11,15 +20,23 @@ const Page = () => {
           <div
             key={i}
             className={`chat ${
-              message.role === "user" ? "chat-end" : "chat-start"
+              message.role == "assistant" ? "chat-start" : "chat-end"
             }`}
           >
             <div className="chat-image avatar">
               <div className="w-10 rounded-full">
-                <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                <img
+                  src={
+                    message.role === "user"
+                      ? "https://api.dicebear.com/5.x/adventurer-neutral/svg?seed=Zoey"
+                      : "https://api.dicebear.com/5.x/bottts/svg?seed=Shadow"
+                  }
+                />
               </div>
             </div>
-            <div className="chat-header">Obi-Wan Kenobi</div>
+            <div className="chat-header">
+              {message.role === "user" ? "You" : "BrainyType"}
+            </div>
             <div className="chat-bubble">{message.content}</div>
           </div>
         ))}
